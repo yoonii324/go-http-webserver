@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) { // register web handler
 		fmt.Fprint(w, "Hello World")
 	})
 
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe(":3000", nil) // start a web server
 }
