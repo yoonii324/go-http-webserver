@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 )
 
@@ -16,15 +15,22 @@ import (
 // 	fmt.Fprintf(w, "Hello %s! id: %d", name, id)
 // }
 
-func main() {
-	mux := http.NewServeMux() // create ServeMux instance
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "Hello World") // register handler to the instance
-	})
-	mux.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "Hello Bar")
-	})
+// func main() {
+// 	mux := http.NewServeMux() // create ServeMux instance
+// 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+// 		fmt.Fprint(w, "Hello World") // register handler to the instance
+// 	})
+// 	mux.HandleFunc("/bar", func(w http.ResponseWriter, r *http.Request) {
+// 		fmt.Fprint(w, "Hello Bar")
+// 	})
 
-	// http.HandleFunc("/bar", barHandler) // register bar handler
-	http.ListenAndServe(":3000", mux) // start mux instance
+// 	// http.HandleFunc("/bar", barHandler) // register bar handler
+// 	http.ListenAndServe(":3000", mux) // start mux instance
+// }
+
+func main() {
+	//http.Handle("/", http.FileServer(http.Dir("static")))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
+	http.ListenAndServe(":3000", nil)
 }
