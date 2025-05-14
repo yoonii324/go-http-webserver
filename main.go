@@ -50,9 +50,9 @@ func StudentHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, string(data)) // send the result
 }
 
-func main() {
-	//http.Handle("/", http.FileServer(http.Dir("static")))
-	//http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+// func main() {
+// 	//http.Handle("/", http.FileServer(http.Dir("static")))
+// 	//http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	http.ListenAndServe(":3000", MakeWebHandler())
-}
+// 	http.ListenAndServe(":3000", MakeWebHandler())
+// }
